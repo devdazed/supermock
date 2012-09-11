@@ -7,6 +7,12 @@
   NodeJS.  Influenced by Python's Mock, SuperMock allows you to write mocks with as little setup
   code as possible.
 
+## Installation
+
+```bash
+   npm install supermock
+```
+
 ## Usage
 
   SuperMock requires harmony-proxies to be enabled
