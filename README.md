@@ -64,6 +64,45 @@
   myMock.returnValue.returnValue.assertCalledWith('789');
 ```
 
+##Patching
+
+SuperMock comes with a convenient way to patch you objects, with patch, mocking becomes easier
+
+patch uses dot `.` notation to patch objects, starting with the module name:
+
+```
+   var patch = require('supermock').patch,
+       restore = require('supermock').restore;
+
+   //This needs to run right before your test
+   //The first argument is what to patch the second is the mock, which defaults to a new SuperMock
+   mock = patch('events.EventEmitter.prototype.on');
+
+   //do something with the mocked class or method
+   var EventEmitter = require('events').EventEmitter,
+       myEmitter = new EventEmitter();
+
+   myEmitter.on('error', console.log);
+
+   //run SuperMock assertions
+   myEmitter.on.assertCallCount(1);
+
+   //Restore it back to its original state
+   restore('events.EventEmitter.prototype.on');
+
+
+   //You can patch full modules too!
+   mock = patch('events');
+
+   var EventEmitter = require('events').EventEmitter,
+       myEmitter = new EventEmitter();
+
+   myEmitter.on('error', console.log);
+   myEmitter.on.assertCallCount(1);
+
+   //Restore it back to its original state
+   restore('events');
+```
 
 ## License 
 
