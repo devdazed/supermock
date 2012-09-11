@@ -2,7 +2,7 @@
   "name": "supermock",
   "version": "0.1.0",
   "description": "Versatile Dynamic Mocking for NodeJS",
-  "keywords": ['mock', 'testing', 'mocking'],
+  "keywords": ["mock", "testing", "mocking"],
   "author": "Russell Bradberry <devdazed@me.com>",
   "dependencies": {},
   "devDependencies": {},
