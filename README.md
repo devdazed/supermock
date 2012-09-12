@@ -62,6 +62,17 @@
   myMock.assertCalledWith('123');
   myMock.returnValue.assertCalledWith('456');
   myMock.returnValue.returnValue.assertCalledWith('789');
+
+  //you can also use callbacks
+  var myMock = new SuperMock({ callback: [ null, { success:true}  ]});
+  myMock(function(error, message){
+    assert.equal(error, null);
+    assert.deepEqual(message, { success:true });
+  });
+
+  //also, don't forget to name your SuperMocks, They chain as well!
+  var myMock = new SuperMock({ mockName: 'myMock' });
+  assert.equal(myMock.foo.bar().baz.qux().getName(), 'myMock.foo.bar().baz.qux()');
 ```
 
 ##Patching
