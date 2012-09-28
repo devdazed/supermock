@@ -16,3 +16,8 @@
   * added naming to the mocks
   * added auto-naming to patching
   * Added support for callbacks
+
+0.1.3 / 2012-09-28
+==================
+
+  * Added ability to set returnValue
