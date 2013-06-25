@@ -36,6 +36,21 @@
    //it also keeps track of what it was called with
    myMock.assertCalledWith('foo', 'bar');
 
+   //special object SuperMock.Anything can be used as a placeholder to match
+   //any argument SuperMock has been called with
+   myMock('foo', new Bar(), 'baz');
+   myMock.assertCalledWith('foo', SuperMock.Anything, 'baz');
+
+   //this is useful to assert event handlers have been registered, since
+   //normally there's no way to know what the callback was
+   myMock('on-biriri', function () { console.log('bururu'); });
+   myMock.assertCalledWith('on-biriri', SuperMock.Anything);
+
+   //special object SuperMock.Etc can be used as a placeholder to match
+   //any number of arguments at the end of the call
+   myMock(1, 2, 3, 4, 5);
+   myMock.assertCalledWith(1, 2, SuperMock.Etc);
+
    //SuperMock will return a new SuperMock object for everything
    myMock.foo.bar.baz.something = 42;
    assert.equal(myMock.foo.bar.baz.something, 42);
